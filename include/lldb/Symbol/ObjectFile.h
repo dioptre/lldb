@@ -831,7 +831,7 @@ public:
     bool
     IsInMemory () const
     {
-        return m_memory_addr != LLDB_INVALID_ADDRESS;
+        return false; // m_memory_addr != LLDB_INVALID_ADDRESS;
     }
 
     // Strip linker annotations (such as @@VERSION) from symbol names.
