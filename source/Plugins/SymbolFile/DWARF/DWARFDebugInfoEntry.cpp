@@ -399,6 +399,7 @@ DWARFDebugInfoEntry::GetDIENamesAndRanges
     int& call_file,
     int& call_line,
     int& call_column,
+    bool& is_artificial,
     DWARFExpression *frame_base
 ) const
 {
@@ -571,6 +572,10 @@ DWARFDebugInfoEntry::GetDIENamesAndRanges
                     }
                     break;
 
+                case DW_AT_artificial:
+                    is_artificial = form_value.Unsigned() != 0;
+                    break;
+
                 default:
                     break;
                 }
@@ -604,7 +609,7 @@ DWARFDebugInfoEntry::GetDIENamesAndRanges
             {
                 DWARFDIE die = dwarf2Data->DebugInfo()->GetDIE(die_ref);
                 if (die)
-                    die.GetDIE()->GetDIENamesAndRanges(die.GetDWARF(), die.GetCU(), name, mangled, ranges, decl_file, decl_line, decl_column, call_file, call_line, call_column);
+                    die.GetDIE()->GetDIENamesAndRanges(die.GetDWARF(), die.GetCU(), name, mangled, ranges, decl_file, decl_line, decl_column, call_file, call_line, call_column, is_artificial);
             }
         }
     }

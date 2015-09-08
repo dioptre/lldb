@@ -32,6 +32,14 @@ public:
                        lldb::addr_t functionAddress,
                        lldb::addr_t returnAddress,
                        llvm::ArrayRef<lldb::addr_t> args) const override;
+
+    bool
+    PrepareTrivialCall (lldb_private::Thread &thread,
+                        lldb::addr_t sp,
+                        lldb::addr_t func_addr,
+                        lldb::addr_t return_addr,
+                        llvm::Type  &returntype,
+                        llvm::ArrayRef<ABI::CallArgument> args) const;
     
     bool
     GetArgumentValues(lldb_private::Thread &thread,
@@ -100,7 +108,7 @@ public:
 
     static lldb_private::ConstString
     GetPluginNameStatic();
-    
+
     //------------------------------------------------------------------
     // PluginInterface protocol
     //------------------------------------------------------------------

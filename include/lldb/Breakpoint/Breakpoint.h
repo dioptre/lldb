@@ -116,6 +116,8 @@ public:
 
         lldb::BreakpointSP &
         GetBreakpoint ();
+
+        lldb::BreakpointSP GetBreakpoint() const;
         
         BreakpointLocationCollection &
         GetBreakpointLocationCollection()

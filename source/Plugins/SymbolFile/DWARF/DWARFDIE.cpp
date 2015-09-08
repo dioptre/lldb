@@ -415,6 +415,7 @@ DWARFDIE::GetDIENamesAndRanges (const char * &name,
                                 int& call_file,
                                 int& call_line,
                                 int& call_column,
+                                bool& is_artificial,
                                 lldb_private::DWARFExpression *frame_base) const
 {
     if (IsValid())
@@ -430,6 +431,7 @@ DWARFDIE::GetDIENamesAndRanges (const char * &name,
                                             call_file,
                                             call_line,
                                             call_column,
+                                            is_artificial,
                                             frame_base);
     }
     else
