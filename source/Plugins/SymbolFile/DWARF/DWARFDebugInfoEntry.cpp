@@ -419,6 +419,7 @@ DWARFDebugInfoEntry::GetDIENamesAndRanges
                                     call_file,
                                     call_line,
                                     call_column,
+                                    is_artificial,
                                     frame_base);
 
     dw_addr_t lo_pc = LLDB_INVALID_ADDRESS;

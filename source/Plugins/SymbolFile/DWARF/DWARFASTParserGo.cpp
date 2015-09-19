@@ -767,6 +767,7 @@ DWARFASTParserGo::ParseFunctionFromDWARF(const SymbolContext &sc, const DWARFDIE
     int call_file = 0;
     int call_line = 0;
     int call_column = 0;
+    bool is_artificial = false;
     DWARFExpression frame_base(die.GetCU());
 
     assert(die.Tag() == DW_TAG_subprogram);
@@ -775,7 +776,7 @@ DWARFASTParserGo::ParseFunctionFromDWARF(const SymbolContext &sc, const DWARFDIE
         return NULL;
 
     if (die.GetDIENamesAndRanges(name, mangled, func_ranges, decl_file, decl_line, decl_column, call_file, call_line,
-                                 call_column, &frame_base))
+                                 call_column, is_artificial, &frame_base))
     {
         // Union of all ranges in the function DIE (if the function is discontiguous)
         AddressRange func_range;
