@@ -102,6 +102,7 @@ namespace
     static inline bool ClangASTContextSupportsLanguage (lldb::LanguageType language)
     {
         return language == eLanguageTypeUnknown || // Clang is the default type system
+               language == eLanguageTypeJulia ||
                Language::LanguageIsC (language) ||
                Language::LanguageIsCPlusPlus (language) ||
                Language::LanguageIsObjC (language);
